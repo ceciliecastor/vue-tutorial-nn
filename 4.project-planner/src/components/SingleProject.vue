@@ -5,7 +5,9 @@
         {{ project.title }}
       </h3>
       <div class="icons">
-        <span class="material-icons">edit</span>
+        <router-link :to="{ name: 'EditProject', params: { id: project.id } }">
+          <span class="material-icons">edit</span>
+        </router-link>
         <span class="material-icons" @click="deleteProject">delete</span>
         <span class="material-icons tick" @click="toggleComplete">done</span>
       </div>
@@ -55,7 +57,7 @@ export default {
   background: white;
   padding: 10px 20px;
   border-radius: 4px;
-  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.05);
   border-left: 4px solid #e90074;
 }
 h3 {
