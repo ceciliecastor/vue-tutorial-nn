@@ -20,6 +20,7 @@
 //  - the endpoint is /posts to add a new post
 
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 
 export default {
   setup() {
@@ -27,6 +28,8 @@ export default {
     const body = ref("");
     const tag = ref("");
     const tags = ref([]);
+
+    const router = useRouter();
 
     const handleKeydown = () => {
       //checks if tags array incl the new tag value
@@ -48,6 +51,7 @@ export default {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(post),
       });
+      router.push({ name: "Home" });
     };
 
     return { title, body, tag, handleKeydown, tags, handleSubmit };
